@@ -10,6 +10,15 @@ IMAGE_NAME          # 镜像标签名称
 CONTAINER_NAME      # 实例名称
 ```
 
+将以上环境变量配置完成后接下来新建一个虚拟网络，如下命令：  
+```sh
+$ docker network create database_app
+```
+
+新建好虚拟网络后直接在本项目下运行 `docker-compose up -d` 命令启动容器。  
+启动容器完毕后可以使用 `docker ps` 命令查看容器是否启动成功。    
+到此数据库已构建完成。
+
 以下是容器映射至主机的端口：
 
 | 容器          | 映射端口  |
