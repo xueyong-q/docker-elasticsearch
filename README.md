@@ -6,8 +6,10 @@
 复制项目下 `.env.example` 文件为 `.env` 并配置其内容。  
 
 ```
-IMAGE_NAME          # 镜像标签名称
-CONTAINER_NAME      # 实例名称
+ES_IMAGE_NAME          # 镜像标签名称
+ES_CONTAINER_NAME      # 实例名称
+KIBANA_IMAGE_NAME      # kibana 镜像名称
+HEAD_IMAGE_NAME        # elasticsearch-head 镜像名称
 ```
 
 将以上环境变量配置完成后接下来新建一个虚拟网络，如下命令：  
@@ -21,6 +23,8 @@ $ docker network create database_app
 
 以下是容器映射至主机的端口：
 
-| 容器          | 映射端口  |
-| ------------- | --------- |
-| elasticsearch | 9200,9300 |
+| 容器               | 映射端口  |
+| ------------------ | --------- |
+| elasticsearch      | 9200,9300 |
+| kibana             | 5601      |
+| elasticsearch-head | 9100      |
