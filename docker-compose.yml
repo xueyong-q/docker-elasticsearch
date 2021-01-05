@@ -2,7 +2,12 @@ version: "3"
 services:
 
     elasticsearch:
-      image: ${ES_IMAGE_NAME}
+      build:
+        context: .
+        dockerfile: ESDockerfile
+        args:
+          - ES_VERSION=${ES_VERSION}
+
       volumes:
         - './data:/usr/share/elasticsearch/data'
         - './elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml'
@@ -12,11 +17,9 @@ services:
         - "9300:9300"
       networks:
         - database_app
-      environment:
-        - 'discovery.type=single-node'
 
     kibana:
-      image: ${KIBANA_IMAGE_NAME}
+      image: kibana:${KIBANA_VERSION}
       ports:
         - "5601:5601"
       networks:
@@ -25,7 +28,7 @@ services:
         - 'ELASTICSEARCH_HOSTS=http://${ES_CONTAINER_NAME}:9200'
 
     head:
-      image: ${HEAD_IMAGE_NAME}
+      image: mobz/elasticsearch-head:${HEAD_VERSION}
       ports:
         - "9100:9100"
       networks:

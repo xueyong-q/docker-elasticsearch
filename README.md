@@ -6,10 +6,12 @@
 复制项目下 `.env.example` 文件为 `.env` 并配置其内容。  
 
 ```
-ES_IMAGE_NAME          # 镜像标签名称
+ES_VERSION             # ES 版本号
 ES_CONTAINER_NAME      # 实例名称
-KIBANA_IMAGE_NAME      # kibana 镜像名称
-HEAD_IMAGE_NAME        # elasticsearch-head 镜像名称
+
+KIBANA_VERSION         # kibana 版本号
+
+HEAD_VERSION           # elasticsearch-head 版本号
 ```
 
 将以上环境变量配置完成后接下来新建一个虚拟网络，如下命令：  
@@ -17,7 +19,14 @@ HEAD_IMAGE_NAME        # elasticsearch-head 镜像名称
 $ docker network create database_app
 ```
 
-新建好虚拟网络后直接在本项目下运行 `docker-compose up -d` 命令启动容器。  
+设置内核：
+```sh
+# 临时设置
+$ sudo sysctl -w vm.max_map_count=262144
+```
+或者在 /etc/sysctl.conf 通过修改 vm.max_map_count 永久设置它。
+
+直接在本项目下运行 `docker-compose up -d` 命令启动容器。  
 启动容器完毕后可以使用 `docker ps` 命令查看容器是否启动成功。    
 到此数据库已构建完成。
 
