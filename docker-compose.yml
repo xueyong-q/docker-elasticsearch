@@ -28,7 +28,7 @@ services:
         - 'ELASTICSEARCH_HOSTS=http://${ES_CONTAINER_NAME}:9200'
 
     head:
-      image: mobz/elasticsearch-head:${HEAD_VERSION}
+      build: .
       ports:
         - "9100:9100"
       networks:

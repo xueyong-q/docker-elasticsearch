@@ -10,8 +10,6 @@ ES_VERSION             # ES 版本号
 ES_CONTAINER_NAME      # 实例名称
 
 KIBANA_VERSION         # kibana 版本号
-
-HEAD_VERSION           # elasticsearch-head 版本号
 ```
 
 将以上环境变量配置完成后接下来新建一个虚拟网络，如下命令：  
