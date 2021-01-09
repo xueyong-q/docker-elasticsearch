@@ -22,7 +22,7 @@ $ docker network create database_app
 # 临时设置
 $ sudo sysctl -w vm.max_map_count=262144
 ```
-或者在 /etc/sysctl.conf 通过修改 vm.max_map_count 永久设置它。
+或者在 /etc/sysctl.conf 通过修改 vm.max_map_count 永久设置它，然后执行 `sudo sysctl -p` 重新加载配置。
 
 直接在本项目下运行 `docker-compose up -d` 命令启动容器。  
 启动容器完毕后可以使用 `docker ps` 命令查看容器是否启动成功。    
